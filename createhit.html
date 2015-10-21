@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Interview</title>
+  <script src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+  <script type="text/javascript">
+    Parse.initialize("rItsbuvkWRxbbDqFCPN1S5zwR5GOuEw4dabRL3Vi", "k20sKk3seoCDKQZYRaHYpcYhPoR0HkTOl31PmGdV");
+  </script>
+<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="hitcalc.js"></script>
+</head>
+<body>
+
+<div id="takeNotes">
+<h2>Create Your Interviews</h2>
+  <form>
+    Title <input type="text" id="title"><br>
+    Phone to Call: <input type="text" id="phone"><br>
+    Reward: <input type="text" id="reward"><br>
+    Number of Interviews: <input type="text" id="reqInterviews"><br>
+    Description: <textarea rows="4" cols="50" id="description"></textarea>
+    <button id="saveRequest">Save Interview</button>
+  </form>
+  <div id="hitreward"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+	costPerInterview( 1, 10, "#hitreward");
+
+$('#saveRequest').click(function (event) {
+
+	event.preventDefault();
+
+	var Amthits = Parse.Object.extend("amthits");
+	var amhits = new Amthits();
+
+	var title = $('#title').val();
+	var phone = $('#phone').val();
+    var reward = $('#reward').val();
+    var reqInterviews = $('#reqInterviews').val();
+	var description = $('#description').val();
+    var status = "Pending";
+	 
+	amhits.set("title", title);
+	amhits.set("phone", phone);
+    amhits.set("reward", reward);
+    amhits.set("reqInterviews", reqInterviews);
+	amhits.set("description", description);
+	 
+	amhits.save(null, {
+	  success: function(amhit) {
+	    // Execute any logic that should take place after the object is saved.
+	    alert('New object created with objectId: ' + amhit.id);
+	  },
+	  error: function(amhit, error) {
+	    // Execute any logic that should take place if the save fails.
+	    // error is a Parse.Error with an error code and description.
+	    alert('Failed to create new object, with error code: ' + error.message);
+	  }
+	});
+
+});
+
+
+}); // end document.ready
+
+ 
+</script>
+
+
+</body>
+</html>

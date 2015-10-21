@@ -1,0 +1,97 @@
+<h4>Who do you want to talk to? <a href="http://customerdiscoveryninja.uservoice.com/knowledgebase/articles/442383-requesting-interviews" target="_blank"><span class="glyphicon glyphicon-question-sign" style="font-size: .6em;"></span></a></h4>
+<div class="new-interviews">
+    <div>
+      <form ng-submit="newHIT()">
+        <div class="">
+          <div class="form-group">
+            <label for="title">10-15 minute phone interview related to</label>
+            <input type="text" id="title" ng-model="title" name="title" class="form-control" placeholder="{{titlePlaceholder}}" ng-change="checkready()"/>
+          </div>
+          <div class="form-group">
+            <label for="description">A 10-15 minute phone interview with anyone who</label>
+            <input type="text" id="description" ng-model="description" class="form-control" placeholder="{{descriptionPlaceholder}}"/>
+          </div>
+          <div class="form-split-half">
+            <div class="form-group ">
+              <label for="reqInterviews">Number of Interviews</label>
+              <input type="text" id="reqInterviews" ng-model="reqInterviews" onkeyup="calculateHITs()" class="form-control"/>
+              <p><i><span id="helper"></span></i></p>
+            </div>
+            <div class="form-group">
+              <label for="confirmcode">Confirmation Code</label>
+              <input type="text" id="confirmcode" ng-model="confirm.code" class="form-control" popover="{{ confirmcodePopover }}"  popover-placement="bottom" popover-trigger="focus" placeholder="{{ confirmCodePlaceholder }}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Note: Submitting this will request {{reqInterviews}} interviews immediately.<br> There could be up to a 15 min delay before calls begin ringing in your browser.</label>
+          </div>
+           <button type="submit" class="btn btn-success btn-lg ring-btn" ng-disabled="checkready()">Make it Ring Now!</button>
+        </div>
+      </form>
+        <button ng-click="toggleSchedule()" class="btn btn-default btn-lg ring-btn" ng-disabled="checkready()">Schedule for Later</button>
+        <button ng-click="saveTemplate()" class="btn btn-default btn-lg ring-btn" ng-disabled="checkready()">Save as Template</button>
+        <div ng-show="showSchedule">
+          <h4>Schedule for:</h4>
+          <p>{{dt | date:'fullDate'}}</p>
+         <span  class="nullable">
+          <p>At: <select ng-model="selectedTime" ng-options="time.readable for time in availableTimes">
+            <option value="">-- choose time --</option>
+          </select></p>
+  </span><br/>
+    <div style="display:inline-block; min-height:290px;">
+        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
+    </div>
+    <button ng-click="sendScheduleRequest()" class="btn btn-success btn-lg ring-btn" ng-disabled="checkready()">Schedule it for Later</button>
+        </div>
+    </div>
+    <div class="new-interviews-helper">
+      <h6>Quick Tips</h6>
+      <ul>
+        <li>A <span class="helper-titles">real person</span> is going to read this.</li>
+        <li>They'll need to know that you want to talk to them!</li>
+        <li>Your description should make a sentence.</li>
+        <li>Below are some good and bad examples, and a preview of yours.</li>
+      </ul>
+      <hr>
+      <h6>Preview yours, does it make sense?</h6>
+        <p><span class="helper-titles">Title:</span><span style="color:#95a5a6"> 10-15 minute phone interview related to </span><span style="font-weight:bold">{{ title }}</span></p>
+        <p><span class="helper-titles">Description:</span><span style="color:#95a5a6"> A 10-15 minute phone interview with anyone who </span><span style="font-weight:bold">{{ description }}</span></p>
+        <hr>
+      <h6>Good Example</h6>
+        <p><span class="helper-titles">Title:</span><span style="color:#95a5a6"> 10-15 minute phone interview related to</span> <span style="font-weight:bold">travel</span></p>
+        <p><span class="helper-titles">Description:</span><span style="color:#95a5a6"> A 10-15 minute phone interview with anyone who</span> <span style="font-weight:bold">has flown in the last 6 months.</span></p>
+      <h6>Bad Example</h6>
+        <p><span class="helper-titles">Title:</span><span style="color:#95a5a6"> 10-15 minute phone interview related </span><span style="font-weight:bold">trips</span></p>
+        <p><span class="helper-titles">Description:</span> <span style="color:#95a5a6"> A 10-15 minute phone interview with anyone who</span> <span style="font-weight:bold">vacation</span></p>
+      
+    </div>
+</div>
+  	
+  	
+    <!--Phone to Call: <input type="text" id="phone" ng-model="phone"><br>-->
+    <!--Each Interview costs $1.25<br>
+     
+    Keywords: <input ng-model="keywords" value="Type Keywords Here"/>-->
+    
+
+
+<script type="text/javascript">
+
+	function calculateHITs () {
+		var numInts = $('#reqInterviews').val();
+		var totalCost = numInts * 2.5;
+		var hitsPerHour = 2.5;
+		var totalHours = numInts / hitsPerHour; 
+		var costMsg = "This will cost: $" + totalCost + ".";
+		var hoursMsg = "This will take approximately: <span class='helper-titles'>" + totalHours + "</span> hours.";
+		var fullMsg = hoursMsg;
+		generateHelper(fullMsg, "#helper");
+		console.log(fullMsg);
+
+	};
+
+	function generateHelper (msg, target) {
+		$(target).html(msg);
+	};
+
+</script>

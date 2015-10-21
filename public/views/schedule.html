@@ -1,0 +1,44 @@
+<!-- <button ng-click="pullSlots()">Click Here</button>
+
+ -->
+ <div class="schedule-holder" ng-show="inProcess">
+ 	<div class="schedule-holder-child">
+ 		<ul style="list-style-type: none">
+			<li ng-repeat="block in blocks | limitTo: 4"><a ng-click="selected($index)">{{ block.slot["formatted_timestamp"]}}</a></li>
+		</ul>
+ 	</div>
+ 	
+
+<div ng-show="showConfirm()" class="schedule-holder-child">
+	<p>Are you sure you want to schedule a 30 minute call for {{chosenTimeFormat}}?</p>
+
+	<button class="btn btn-primary btn-lg" ng-click="showInfoBox()">Yes I'm Sure!</button>
+	<i>If not, pick a different time to the left</i>
+</div>
+</div>
+<div ng-show="showInfo" style="width:50%; float:right;">
+	<p>Awesome, now just tell us a little about yourself:</p>
+	<label class="input-label" for="name">Name:</label>
+	<input class="form-control main-input" type="text" name="name" ng-model="user_name"/>
+	
+	<label class="input-label" for="email">Email:</label>
+	<input class="form-control main-input" type="text" name="email" ng-model="user_email"/>
+
+	<label class="input-label" for="user_notes">Anything we should know before the conversation?</label>
+	<input class="form-control main-input" type="text" name="user_notes" ng-model="user_notes"/>
+	<br>
+	<button ng-click="bookSlot()" class="btn btn-primary btn-lg">Book it already!</button>
+</div>
+
+<div ng-show="showSuccess">
+	Whoa it worked! Thats awesome!
+
+	What to expect:
+	<ul>
+		<li>On {{chosenTimeFormat}}, please call this number</li>
+		<li>Don't worry, we've sent you an email with all these details</li>
+	</ul>
+</div>
+
+
+<!-- <div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>  -->

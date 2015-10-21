@@ -1,0 +1,87 @@
+#big-ninja {
+	display: none;
+}
+.ninja-creep {
+	display: none;
+}
+
+#main-video{
+	display: none;
+}
+
+.navbar-brand {
+	font-size: 1em;
+}
+
+.home-test-main {
+	position: relative;
+	width: 100vw;
+	height: 30em;
+	background-color: #34495e;
+	left: calc(-50vw + 50%);
+	top: -2em;
+	padding: 4em 1em 0em 1em;
+}
+
+.main-liner {
+	color: #ecf0f1;
+	width: 60%;
+	min-width: 300px;
+	font-size: .5em;
+}
+
+.home-test-second {
+	padding: 1em 1em 1em 1em;
+	font-size: .75em;
+}
+
+.benefit {
+	width: 100%;
+}
+
+.home-test-third {
+	padding: 1em 1em 1em 1em;
+	font-size: .75em;
+}
+
+.home-test-fourth {
+	padding: 1em 1em 1em 1em;
+	font-size: .75em;
+}
+
+@media (max-width: 700px){
+	#compare-sign {
+		display: none;
+	}
+
+	#compare-right {
+		display: none;
+	}
+
+	#compare-title {
+		display: none;
+	}
+}
+
+.signup-page {
+	position: relative;
+	width: 100vw;
+	height: 30em;
+	background-color: white;
+	left: calc(-50vw + 50%);
+	top: -2em;
+	padding: 2em 1em 0em 1em;
+}
+
+.untorch-panel {
+	width: 100%;
+	padding: 1em 0 0 1em;
+}
+
+.full-page-form {
+}
+
+.panel > div {
+	min-width: 300px;
+	width: 60%;
+}

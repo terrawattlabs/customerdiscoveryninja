@@ -1,0 +1,157 @@
+<h2>{{ selproject.get('title') }}</h2>
+<p>{{ selproject.get('description') }}</p>
+    
+    <div class="col-sm-4" ng-hide="numInterviews <=5">
+    <small><em>Total Interviews</em></small>
+    <progressbar class="progress-striped active" value="numInterviews" max="50">
+        <span ng-hide="numInterviews < 5">{{numInterviews}}</span>
+        </progressbar>
+    </div>
+
+<div class="project-dashboard">
+  <div class="project-dash-main">
+      <h4>Interviews</h4>
+      <div ng-show="numInterviews == 0">
+        When you've completed an interview, it will show up here.<br>
+        To request interviews, click "Request Interviews" up to the right.
+      </div>
+     
+
+      <!-- <accordion close-others="oneAtATime">
+        <accordion-group ng-repeat="int in interviews">
+          <accordion-heading>
+              {{ int.get('name') }}
+              <rating max="maxRating" readonly="true" ng-model="int.theRating"></rating>
+          </accordion-heading>
+          {{int.get('takeaway')}}
+        </accordion-group>
+      </accordion> -->
+      <table class="table" ng-hide="numInterviews == 0">
+
+        <thead ng-hide="interviews.length == 0">
+          <tr>
+            <td>Date</td>
+            <td>Name</td>
+            <td>Rating</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="int in interviews" ng-click="goToPage('/interviewdetail/' + selproject.id + '/' + int.id)" ng-class="{success: hover}" 
+    ng-mouseenter="hover = true"
+    ng-mouseleave="hover = false">
+            <td>{{ int.createdAtReadable }}</td>
+            <td>{{ int.get('name') }}</td>
+            <td><rating max="maxRating" readonly="true" ng-model="int.theRating"></rating></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="project-dash-secondary">
+    <div class="project-dash-secondary-item request-btn">
+     <button class="btn btn-primary btn-hg" style="width: 100%;" ng-click="goToPage('/request/'+selproject.id)">Request Interviews</button>
+    </div>
+    <!-- <div class="project-dash-secondary-item">
+      <h4>Request Interviews <a href="http://customerdiscoveryninja.uservoice.com/knowledgebase/articles/442383-requesting-interviews" target="_blank"><span class="glyphicon glyphicon-question-sign" style="font-size: .6em;"></span></a></h4>
+        <button class="btn btn-primary btn-lg" ng-click="goToPage('/newinterview/' + selproject.id + '/new')">New Request Template</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Created</td>
+              <td>Title</td>
+              <td>View/Edit</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="temp in templateList">
+              <td>{{ temp.createdAtReadable }}</td>
+              <td>{{ temp.get('title') }}</td>
+              <td><button ng-click="goToPage('/newinterview/' + selproject.id + '/' + temp.id)" class="btn btn-primary">Request</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div> -->
+    <div class="project-dash-secondary-item">
+      <h4>Questions</h4>
+        <button ng-click="goToPage('/intquestions/' + selproject.id + '/new')" class="btn btn-primary btn-sm">New Questions</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Created</td>
+              <td>Title</td>
+              <td>View/Edit</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="quest in questionList">
+              <td>{{ quest.createdAtReadable }}</td>
+              <td>{{ quest.get('title') }}</td>
+              <td><button ng-click="goToPage('/intquestions/' + selproject.id + '/' + quest.id)" class="btn btn-primary btn-sm">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <!-- <div class="project-dash-secondary-item">
+    <h4>Shared With</h4>
+      <ul>
+        <li ng-repeat="user in sharedUsers"> {{ user.get('name') }}</li>
+      </ul>
+    </div> -->
+      
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  <!-- <ul>
+    <li ng-repeat="user in sharedUsers"> {{ user.get('name') }}</li>
+  </ul>
+<button class="btn btn-primary btn-lg" ng-click="goToPage('/newinterview')">Request New Interviews</button>
+  
+<h4>Questions</h4>
+<button ng-click="goToPage('/intquestions/' + selproject.id + '/new')" class="btn btn-primary">New Questions</button>
+<table class="table">
+  <thead>
+    <tr>
+      <td>Created</td>
+      <td>Title</td>
+      <td>View/Edit</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="quest in questionList">
+      <td>{{ quest.createdAtReadable }}</td>
+      <td>{{ quest.get('title') }}</td>
+      <td><button ng-click="goToPage('/intquestions/' + selproject.id + '/' + quest.id)" class="btn btn-primary">Detailed View</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button ng-click="goToPage('/intquestions/' + selproject.id)" class="btn btn-primary">Set Project Questions</button>
+
+<h4>Interviews</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Name</td>
+      <td>View</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="int in interviews">
+      <td>{{ int.createdAtReadable }}</td>
+      <td>{{ int.get('name') }}</td>
+      <td><button ng-click="goToPage('/interviewdetail/' + int.id)" class="btn btn-primary">Detailed View</button></td>
+    </tr>
+  </tbody>
+</table> -->

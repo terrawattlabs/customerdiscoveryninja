@@ -1,0 +1,50 @@
+<button ng-click="saveAvailability()">Click me</button>
+<ul>
+	<li>monday start {{mondayStart}}</li>
+	<li>monday end {{mondayEnd}}</li>
+	<li>tuesday start {{tuesdayStart}}</li>
+	<li>tuesday end {{tuesdayEnd}}</li>
+	<li>wednesday start {{wednesdayStart}}</li>
+	<li>wednesday end {{wednesdayEnd}}</li>
+</ul>
+<div class="btn-group">
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'mon'" uncheckable>Monday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'tues'" uncheckable>Tuesday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'wed'" uncheckable>Wednesday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'thu'" uncheckable>Thursday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'fri'" uncheckable>Friday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'sat'" uncheckable>Saturday</label>
+        <label class="btn btn-success" ng-model="radioModel" btn-radio="'sun'" uncheckable>Sunday</label>
+</div>
+
+
+<table style="width:100%;">
+	<tr ng-show="radioModel == 'mon'">
+		<td>Monday</td>
+		<td><timepicker ng-model="mondayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="mondayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'tues'">
+		<td>Tuesday</td>
+		<td><timepicker ng-model="tuesdayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="tuesdayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'wed'">
+		<td>Wednesday</td>
+		<td><timepicker ng-model="wednesdayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="wednesdayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'thu'">
+		<td>Thursday</td>
+		<td><timepicker ng-model="thursdayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="thursdayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'fri'">
+		<td>Friday</td>
+		<td><timepicker ng-model="fridayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="fridayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'sat'">
+		<td>Saturday</td>
+		<td><timepicker ng-model="saturdayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="saturdayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+	<tr ng-show="radioModel == 'sun'">
+		<td>Sunday</td>
+		<td><timepicker ng-model="sundayStart" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker> to <timepicker ng-model="sundayEnd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker></td>
+	</tr>
+</table>

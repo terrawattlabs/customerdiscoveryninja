@@ -1,0 +1,23 @@
+<CreateHITResponse>
+	<OperationRequest>
+		<RequestId>18725a41-7e2e-4a6f-8e50-57375a0660ac</RequestId>
+		<Errors>
+			<Error>
+				<Code>AWS.BadClaimsSupplied</Code>
+				<Message>The specified claims are invalid.   Based on your request, your signature should be generated using the following string: AWSMechanicalTurkRequesterCreateHIT2014-10-24T03:13:38Z.  Check to make sure your system clock and timezone is not incorrect.  Our current system time: 2014-10-24T03:13:37Z.  (1414120417912 s)</Message>
+				<Data>
+					<Key>CustomerSignature</Key>
+					<Value>BDb06iMAvwwfcnNevvRYyzcJQhQ=</Value>
+				</Data>
+				<Data>
+					<Key>StringToSign</Key>
+					<Value>AWSMechanicalTurkRequesterCreateHIT2014-10-24T03:13:38Z</Value>
+				</Data>
+				<Data>
+					<Key>SystemTime</Key>
+					<Value>2014-10-24T03:13:37Z</Value>
+				</Data>
+			</Error>
+		</Errors>
+	</OperationRequest>
+</CreateHITResponse>

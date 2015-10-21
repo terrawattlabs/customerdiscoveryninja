@@ -1,0 +1,32 @@
+<div ng-controller="PhoneCtrl">
+    <!--Number to call: <input type="text" id="tocall" value="">
+    <input type="button" id="call" value="Start Call"/>-->
+    <!--<button ng-show="activeCall()" ng-click="hangUp()">Hang Up</button>-->
+    <!--<input type="button" id="hangup" value="Hangup Call" style="display:none;"/>-->
+    <!--<button ng-click="startTheTimer()">Start</button>-->
+
+                <div ng-show="checkLoggedIn()" class="dropdown nav navbar-nav" style="margin-left: 2em;">
+                  <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-earphone"></span> {{ callTimer }}<span class="caret"></span></button>
+                  <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                  <div class="dropdown-menu dropdown-inverse" id="phoneDropdown" style="padding: 1em;">
+                      Device Status: <span style="color: #1abc9c;">{{ deviceStatus }}</span><br>
+                      Your Phone Number: <span style="color: #1abc9c;">{{ userNumber }}</span>
+                      <div class="form-group">
+                        <input ng-model="dialNumber" class="form-control" placeholder="Type Number Here"/>
+                      </div>
+                    <button class="btn btn-success" ng-click="call()">Call</button>
+                    <button class="btn btn-danger" ng-click="hangup()">Hang Up</button>
+                  </div>
+                </div>
+</div>
+
+  
+
+<script type="text/javascript">
+
+$('#phoneDropdown').on({
+    "click": function() {return this.closable = false; }
+});
+
+
+</script>

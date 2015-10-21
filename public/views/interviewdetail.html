@@ -1,0 +1,25 @@
+<h3>Interview with {{name}}</h3>
+<form ng-submit="updateNotes()">
+<div class="intdetail-top">
+	<div>
+		<input class="form-control" ng-model="name" style="max-width: 20em;"></input><br>
+		Date: {{ readableDate }}
+	</div>
+	<div>
+		
+		<rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+		<span class="label" ng-show="overStar" style="color:black">{{helper}}</span><br><br>
+		<audio type="audio/mp3" controls="controls"></audio> <br>{{FireFoxWarn}}
+	</div>
+</div>
+<br>
+Primary Take-Away <input class="form-control" ng-model="takeaway"></input><br>
+<br>
+
+
+
+	<div text-angular ng-model="notes"></div>
+	<button type="submit" class="btn btn-lg btn-success">Save</button>
+</form>
+	<button type="button" class="btn btn-lg btn-default" ng-click="goToPage('/projdetail/' + selprojectID)">Return to Project</button>
+

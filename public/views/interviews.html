@@ -1,0 +1,6 @@
+<div ng-repeat="interview in interviews" class="request-holder">
+	Name: {{ interview.get('name') }} <br>
+	Notes: <div class="staticNotes" ng-bind-html="interview.get('notes')"></div><br>
+	Date: {{ interview.createdAt }}<br>
+	<button ng-click="goToPage('/interviewdetail/' + interview.id)">Detailed View</button>
+</div>

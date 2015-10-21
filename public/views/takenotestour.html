@@ -1,0 +1,81 @@
+<tour step="currentStep">
+
+<span tourtip="Depending on your browser, you may have to allow use of your computer's microphone." tourtip-step="0" tourtip-placement="bottom" tourtip-next-label="Got it"></span>
+<span style="margin-left: 100px;" tourtip="Can you hear yourself through the computer? It's recording so say something funny." tourtip-step="1" tourtip-placement="bottom" tourtip-next-label="Yep, it's working"></span>
+<span style="margin-left: 100px;" tourtip="The timer at the top counts the length of the call, and you only use a credit if it is more than 1 minute long." tourtip-step="6" tourtip-placement="bottom" tourtip-next-label="Yep, it's working"></span>
+
+<h2 tourtip="Awesome! You can hang up now if you want. This is the page where you can take notes during your interview." tourtip-step="2" tourtip-placement="bottom" tourtip-offset="50">Interview Notes</h2>
+<div class="take-notes-holder">
+	<div class="questions notes-child" tourtip="You can set up a script or list of questions for during your interview to make sure you cover everything." tourtip-step="5" tourtip-placement="right" tourtip-offset="0">
+		<h4>{{prompt.get('title')}}</h4>
+		<div>
+		<div ng-bind-html="prompt.get('questions')"></div>
+	</div>
+</div>
+
+	<div id="takeNotes" class="notes-child">
+		
+			  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;" >
+					<div class="form-group" style="width:15em;">
+				  		<label for="name">Name: {{name}}</label>
+				  		<input type="text" id="firstName" ng-model="TfirstName" class="form-control" ng-keyup="testingThings()"/>
+				  		<span tourtip="Write the name of the person you interview here. Go ahead and enter your name." tourtip-step="3"tourtip-placement="bottom"></span>
+		  			</div>
+		  			<div>
+		  				
+		  			<div class="btn-group" dropdown is-open="status.isopen" style="">
+		                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" ng-disabled="disabled">
+		                 Project: {{selproject.get('title')}}<span class="caret"></span>
+		                </button>
+		                <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+		                <ul class="dropdown-menu dropdown-inverse project-dropdown" role="menu">
+		                  <li ng-repeat="proj in userProjs"><a ng-click="changeSelectedProject(proj)" class="dropdown-toggle">{{ proj.get('title') }}</a></li>
+		                </ul>
+		              </div> 
+		  			</div>
+					  			
+			  </div>
+		    <rating ng-model="Trate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" id="givenRating"></rating>
+		    <span class="label" ng-show="overStar" style="color:black">{{helper}}</span>
+		    <span tourtip="Take notes for the interview here. We'll save them for later." tourtip-step="4" tourtip-placement="left"></span>
+		    <div text-angular ta-toolbar="[['bold','italics', 'underline'],['ul','ol'] ,['justifyLeft', 'justifyCenter', 'justifyRight'],['undo', 'redo'], ['indent', 'outdent']]" ng-model="Tnotes" class="notes" id="theNotes"></div>
+		    <input type="hidden" id="callSID" ng-model="TcallSID"/>
+		    <br>
+		    <div class="form-group">
+		    	<label for="takeaway">One Sentence Take-Away</label>
+		    	<input type="text" id="takeaway" class="form-control" ng-model="Ttakeaway" tourtip="Enter a quick take-away from the interview." tourtip-step="7" tourtip-placement="left" tourtip-offset="0"/>
+		    </div>
+
+		    <button id="saveInterview" class="btn btn-lg btn-success" ng-click="newInterview()" tourtip="And finally, save it here. Hang up the phone (if you haven't already) and click save, we'll go to your project summary." tourtip-step="8" tourtip-placement="left" tourtip-offset="0" tourtip-next-label="Finish">Save Interview</button>
+		  <br>
+		  <button id="submitIssue" class="btn btn-lg btn-default">Report a Problem with this Interview</button>
+	</div>
+	</tour>
+
+</div>
+<script type="text/javascript">
+	$("select").selectpicker({style: 'btn btn-primary', menuStyle: 'dropdown-inverse'});
+</script>
+
+
+<!-- UserVoice JavaScript SDK (only needed once on a page) -->
+<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/E0IHRYI92VQSCjIPoVGlWQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+
+<!-- A function to launch the Classic Widget -->
+<script>
+UserVoice = window.UserVoice || [];
+function showClassicWidget() {
+  UserVoice.push(['showLightbox', 'classic_widget', {
+    mode: 'full',
+    primary_color: '#cc6d00',
+    link_color: '#007dbf',
+    default_mode: 'support',
+    forum_id: 265161
+  }]);
+};
+
+$('#submitIssue').click(function(){
+	showClassicWidget();
+});
+
+</script>

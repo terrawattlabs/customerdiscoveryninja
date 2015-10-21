@@ -1,0 +1,203 @@
+
+<h2>Step {{setupStep}} of 4</h2>
+<p>Please complete this process, it is quick and you only have to do it once!</p>
+
+
+
+<div ng-show="setupStep == 1">
+	<h4>Complete the Signup</h4>
+	<p>What is about to happen:</p>
+	<ul>
+		<li>$20/month subscription</li>
+		<li>Interviews as low as $6 each</li>
+		<li>Today - $20 Charge and start your subscription</li>
+		<li>You get 4 free interviews credits you can use immediately (plus 4 more each month)</li>
+		<li>Cancel at any time</li>
+		<li>30 Day 100% Money Back Guarantee</li>
+			<ul>
+				<li>Even if you use the free interviews, we'll refund your $20 if you're not happy</li>
+				<li>Seriously, here is my cell phone number, call me to cancel if you want - 908-295-4795</li>
+			</ul>
+	</ul>
+	<form stripe-form="handleStripe" name="myForm">
+    <div class="billing-form-holder">
+      <div class="form-row">
+        <div class="form-group">
+            <label for="">Card number</label>
+            <input type="text" class="input-block-level form-control" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="myForm.number.$card.type"/>
+          </div>
+      </div>
+      <div class="form-row form-row-double">
+            <div class="form-group">
+            <label for="">Expiry (MM/YYYY)</label>
+            <input type="text" class="input-block-level form-control" ng-model="expiry" payments-validate="expiry" payments-format="expiry"/>
+          </div>
+          
+          <div class="form-group">
+            <label for="">CVC</label>
+            <input type="text" class="input-block-level form-control" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type"/>
+          </div>
+      </div>
+      <div class="form-row">
+         <div class="form-group">
+            <label>Got a coupon?</label>
+            <input type="text" ng-model="givenCode" class="form-control" ng-keyup="findCoupon()"/> {{couponHelperMsg}}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="btn btn-primary btn-lg">
+        Submit</button>
+      </div>
+    </div>    
+</form>
+</div>
+
+
+<div ng-show="setupStep == 2">
+	<h3>Welcome, {{user.get('name')}}</h3>
+	<h4>Why don't you tell us what you're working on?</h4>
+	<form name="newProjectForm" novalidate ng-submit="submitProject()">
+			  <div>
+			  	<div class="form-group">
+				    <label for="title">Name your project:</label>
+				    <input type="text" class="form-control" id="title" ng-model="projectTitle" style="width: 25%;"/>
+			    </div>
+			    <div class="form-group">
+				    <label for="description">Describe it here:</label>
+				    <input type="text" class="form-control" id="description" ng-model="projectDescription" style="width: 60%;"/>
+			    </div>
+			  </div>
+			  <div>
+			    <button class="btn btn-primary" type="submit">Next</button>
+			  </div>
+			</form>
+</div>
+
+<!-- <div ng-show="setupStep == 3">
+	<h3>{{projectTitle}} Sounds Sweet!</h3>
+	<h4>Let's setup a dedicated phone number so your customers can call you</h4>
+	<div class="form-group">
+	    <label for="areacode">Search with a 3-digit area code (or just click "Find Numbers!)"</label>
+	    <input type="text" class="form-control" id="areacode" ng-model="areaCode" style="width: 10%;"/>
+    </div>
+    <button class="btn btn-primary" ng-click="getPhoneNumbers()">Find Numbers!</button>
+    <div ng-repeat="numb in availNumbers | limitTo: 5" class="phonenumbers">
+			{{numb.friendly_name}} <button class="btn btn-sm btn-success" ng-click="purchaseNumber(numb.phone_number, numb.friendly_name)">This One</button>
+	</div>
+</div> -->
+
+<div ng-show="setupStep == 3">
+	<h3>Now, who do you want to talk to?</h3>
+	<p>Select your target customer segment, then click next.</p>
+	<div class="segmentHolder">
+		<div ng-click="showNewTargetDescription()" ng-class="{'selected-segment': showSubmitNew}"><p>Don't see your target segment? Click here</p></div>
+		<div ng-repeat="segment in collection"
+             ng-class="{ 'selected-segment': $index == selectedIndex }"
+             ng-click="itemClicked($index)"> {{ segment.get('customerTitle') }} </div>
+	</div>
+	<div style="padding-top: 2em;">
+		<p>Description: {{selectedSegment.get('customerDescription')}}</p>
+	</div>
+	<div ng-show="showSubmitNew" id="submitNewSegmentForm">
+		<h5>Request a new target segment</h5>
+		<p>In order to provide high quality interviews with your target market segment, we personally setup each new target segment in our system.</p>
+		<div class="input-group">
+			<label for="newGeneral">In general terms, who do you want to talk to?</label>
+			<input id="newGeneral" type="text" ng-model="newGeneral" class="form-control"/>
+		</div>
+		<div class="input-group">
+			<label for="newSpecific">Now, give us a little more detail about your target.</label>
+			<textarea id="newSpecific" ng-model="newSpecific" class="form-control"></textarea>
+		</div>
+		<p>Note: We'll email you and contact you with more info soon.</p>
+		<button class="btn btn-primary" ng-click="submitNewSegmentRequest()">Submit New Segment Request</button>
+	</div>
+	<div ng-show="showSubmittedNew">
+		<h5>New Segment Request Sent!</h5>
+		<p>We've sent you a summary email and we'll be in touch shortly.</p>
+		<p>Go ahead and click "Next" below to complete the setup process.</p>
+	</div>
+	<button class="btn btn-warning" ng-click="subStep()">Back</button>
+	<button class="btn btn-primary" ng-click="saveTemplate()">Next</button>
+</div>
+
+<div ng-show="setupStep == 4">
+	<h3>Last Step!</h3>
+	<h5>Now, let's show you how a call actually happens.</h5>
+	<p style="font-size: 1.2em;">You now have Customer Discovery Ninja phone number! </p>
+	<ul>
+		<li>From another phone, call your number. Its <strong>{{userPhoneNumber}}</strong></li>
+		<li>Your browser will ring and show a popup for you to accept the call.</li>
+		<li>You'll <strong>automagically</strong> be directed to the page where you can take notes.</li>
+		<li>Depending on your browser, you may have to allow use of your microphone.</li>
+	</ul>
+</div>
+
+<!-- 
+<div ng-show="setupStep == 4">
+	<h4>What do you want to ask them?</h4>
+	<p>Here is a template for questions you may want to ask during the interview. Feel free to edit them now or later. These questions will show up while you are talking to your potential customers so you can guide the conversation.</p>
+	<p>Remember, don't pitch your solution. Have a conversation with them about their problems.</p>
+    <div text-angular ta-toolbar="[['bold','italics', 'underline'],['ul','ol'] ,['justifyLeft', 'justifyCenter', 'justifyRight'],['undo', 'redo'], ['indent', 'outdent']]" ng-model="questions"></div>
+    <button class="btn btn-primary" ng-click="saveQuests()">Next</button>
+	
+</div>
+
+<div ng-show="setupStep == 5">
+	<h2>This is important, please read!</h2>
+	<p>The category and description of who you want to talk to is going to be submited to our pool of qualified participants. They are going to read what you've written and choose if they are a good fit for your request. If they do fit, they will call you.</p>
+	<p>It is important that your posting makes sense <strong>even to someone who has NO IDEA what you are working on.</strong> Our participants are ONLY checking if they fit your criteria.</p>
+	<p>Preview your submission to ensure that it reads like a sentence and makes sense to someone who doesn't know what you are working on.</p>
+	<br>
+	
+	<div class="submitPreview">
+		<h4>Does this make sense?</h4>
+		<p><strong>Title:</strong>This conversation will be about {{targetTitle}}</p>
+		<p><strong>Description:</strong>I want to talk to anyone who {{targetDescription}}</p>
+		<input id="agree" type="checkbox" ng-model="doesItMakeSense">
+		<label for="agree">Yes, the above makes sense</label><br>
+		<button class="btn btn-warning" ng-click="setStep(3)">No, I need to change this</button>
+		<button class="btn btn-default" ng-click="saveItAll()" ng-disabled="!doesItMakeSense">Save for Later</button>
+		<button class="btn btn-primary" ng-click="open()" ng-disabled="!doesItMakeSense">Have Someone Call Me!</button>
+	</div>
+</div>
+ -->
+
+
+
+<script type="text/ng-template" id="submitInterviews.html">
+		<div class="modal-header"><h5>Here is what is about to happen</h5></div>
+       <form name="intReqForm" novalidate ng-submit="requestHIT()">
+       		{{setFormReference(intReqForm)}}
+			  <div class="modal-body">
+
+				<ol>
+					<li>We'll send your request off to our pool of participants</li>
+					<li>They'll review and decide to call you or not</li>
+					<li>It may take about 10-15 minutes for calls to start coming in</li>
+					<li>When they call, your browser will ring</li>
+					<li>When you answer, you'll be re-directed to our note taking page</li>
+					<li>Have the conversation and take some notes</li>
+					<ul>
+						<li>The call is being recorded so you can listen to it later</li>
+					</ul>
+					<li style="color:red"><strong>At the end of the conversation:</strong></li>
+					<ul>
+						<li>Give the person the confirmation code you type in below</li>
+						<li>They'll probably ask you for the "Answer" or "Code"</li>
+						<li>This is how they get paid!</li>
+						<li>Keep it simple like, "Chicago" or "Baseball"</li>
+					</ul>
+				</ol>
+			  	<div class="form-group">
+				    <label for="confirm">Confirmation Code</label>
+				    <input type="text" class="form-control" id="confirm" ng-model="intReqForm.confirm" style="width:30%;"/>
+			    </div>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn btn-primary" type="submit">Have someone call me!</button>
+			    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+			  </div>
+			</form>
+		</script>

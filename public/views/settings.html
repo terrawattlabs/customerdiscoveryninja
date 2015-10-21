@@ -1,0 +1,112 @@
+<h2>Settings</h2>
+
+Your Number is: {{usersNumber}} <br>
+Your Current Balance is: <strong>{{usersBalance}}</strong> Credits
+
+<h2>Billing</h2>
+<p>Add interview credits to your account</p>
+
+<div class="btn-group">
+      <label ng-repeat="pack in packages" class="btn btn-primary" ng-model="radiomodel.id" btn-radio="pack.id" uncheckable ng-change="costUpdate()">{{pack.credits}} Pack (${{pack.cost}})</label>
+  </div>
+<div ng-show="checkSavedCustomer()">
+  <input id="agree" type="checkbox" ng-model="agreeToBuy">
+    <label for="agree">I agree to pay {{ btnMsg }}</label><br>
+
+  <button ng-click="buyCredits()" class="btn btn-primary btn-lg" ng-disabled="!agreeToBuy">Buy Credits</button>
+</div>
+
+
+<div ng-hide="checkSavedCustomer()">
+  <form stripe-form="handleStripe" name="myForm">
+    <div class="billing-form-holder">
+      <div class="form-row">
+        <div class="form-group">
+            <label for="">Card number</label>
+            <input type="text" class="input-block-level form-control" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="myForm.number.$card.type"/>
+          </div>
+      </div>
+      <div class="form-row form-row-double">
+            <div class="form-group">
+            <label for="">Expiry (MM/YYYY)</label>
+            <input type="text" class="input-block-level form-control" ng-model="expiry" payments-validate="expiry" payments-format="expiry"/>
+          </div>
+          
+          <div class="form-group">
+            <label for="">CVC</label>
+            <input type="text" class="input-block-level form-control" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type"/>
+          </div>
+      </div>
+      <div class="form-row">
+         <div class="form-group">
+            <label>Got a coupon?</label>
+            <input type="text" ng-model="givenCode" ng-keyup="findCoupon()" class="form-control"/><span>{{ couponMsg }}</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="btn btn-primary btn-lg">
+        Pay {{ btnMsg }}</button>  {{ savingMsg }}
+      </div>
+    </div>    
+</form>
+
+</div>
+
+
+
+
+<!--
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Credits</td>
+      <td>USD</td>
+      <td>Status</td>
+      <td>Type</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="trans in transList">
+      <td>{{ trans.createdAt }}</td>
+      <td>{{ trans.get('credits') }}</td>
+      <td>{{ trans.get('dollars') }}</td>
+      <td>{{ trans.get('status') }}</td>
+      <td>{{ trans.get('type') }}</td>
+    </tr>
+  </tbody>
+</table>
+
+-->
+
+
+
+<script type="text/javascript">
+	 
+   // probably want to start the submit button as disabled and wait for everything to be added with validation
+	function calculateCost () {
+		var numInts = $('#interview-credits').val();
+    // want to validate that its a number first
+    if (numInts < 0) {
+      $('#paymentSubmit').attr("disabled", "disabled");
+      generateHelper("Positive numbers only, this is not a free money machine... sorry", "#credits-helper");
+    } else {
+      $('#paymentSubmit').removeAttr("disabled");
+      var totalCost = numInts * 2.5;
+      var hitsPerHour = 2.5;
+      var totalHours = numInts / hitsPerHour; 
+      var costMsg = "This will cost: $" + totalCost + ".";
+      var hoursMsg = " And take approximately: " + totalHours + " hours.";
+      var fullMsg = costMsg;
+      generateHelper(fullMsg, "#credits-helper");
+      console.log(fullMsg);
+      };
+	};
+
+	function generateHelper (msg, target) {
+		$(target).html(msg);
+	};
+
+</script>

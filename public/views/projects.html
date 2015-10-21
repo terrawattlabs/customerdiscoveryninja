@@ -1,0 +1,28 @@
+<h2>Projects</h2>
+<button class="btn btn-hg btn-success" ng-click="showNewProj()">Add New Project</button>
+
+<div id="addProject" ng-show="newProj()">
+
+	<form name="newProjForm" ng-submit="newProject()">
+        	Project Title: <input type="text" ng-model="projTitle" /><br>
+        	Project Description: <input type="text" ng-model="projDesc" /><br>
+        	Share Project with Others: <input type="text" ng-model="projShare" /><br>
+        	<i>Please enter e-mails separated by a comma</i>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+
+Your Projects
+<div ng-repeat="proj in userProjectList" class="request-holder">
+	Title: {{ proj.get('title') }} <br>
+	<button ng-click="goToPage('/projdetail/' + proj.id)" class="btn btn-primary">Detailed View</button>
+</div>
+
+
+Projects Shared with You
+
+<div ng-repeat="proj in sharedProjectList" class="request-holder">
+	Title: {{ proj.get('title') }} <br>
+	<button ng-click="goToPage('/projdetail/' + proj.id)" class="btn btn-primary">Detailed View</button>
+</div>
+
+

@@ -1,0 +1,85 @@
+
+<h2>Interview Notes</h2>
+<div class="take-notes-holder">
+	<div class="questions notes-child">
+			<div class="btn-group" dropdown style="">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" ng-disabled="disabled">
+             Questions: {{selPrompt.get('title')}}<span class="caret" style="padding: 0em;"></span>
+            </button>
+            <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+            <ul class="dropdown-menu dropdown-inverse project-dropdown" role="menu">
+              <li ng-repeat="prompt in projPrompt"><a ng-click="changeSelectedPrompt(prompt)" class="dropdown-toggle">{{ prompt.get('title') }}</a></li>
+            </ul>
+          </div>
+		<div>
+		<div ng-bind-html="selPrompt.get('questions')"></div>
+		</div>
+</div>
+
+	<div id="takeNotes" class="notes-child">
+		
+		  <form ng-submit="newInterview()">
+			  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;" >
+					<div class="form-group" style="width:15em;">
+				  		<label for="name">Name:</label>
+				  		<input type="text" id="name" ng-model="firstName" class="form-control"/>
+		  			</div>
+		  			<div>
+		  				
+		  			<div class="btn-group" dropdown is-open="status.isopen" style="">
+		                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" ng-disabled="disabled">
+		                 Project: {{selproject.get('title')}}<span class="caret"></span>
+		                </button>
+		                <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+		                <ul class="dropdown-menu dropdown-inverse project-dropdown" role="menu">
+		                  <li ng-repeat="proj in userProjs"><a ng-click="changeSelectedProject(proj)" class="dropdown-toggle">{{ proj.get('title') }}</a></li>
+		                </ul>
+		              </div>
+		  			</div>
+					  			
+			  </div>
+		    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+		    <span class="label" ng-show="overStar" style="color:black">{{helper}}</span>
+		    <div text-angular ta-toolbar="[['bold','italics', 'underline'],['ul','ol'] ,['justifyLeft', 'justifyCenter', 'justifyRight'],['undo', 'redo'], ['indent', 'outdent']]" ng-model="notes" class="notes"></div>
+		    <input type="hidden" id="callSID" ng-model="callSID"/>
+		    <br>
+		    <div class="form-group">
+		    	<label for="takeaway">One Sentence Take-Away</label>
+		    	<input type="text" id="takeaway" class="form-control" ng-model="takeaway"/>
+		    </div>
+
+		    <button id="saveInterview" class="btn btn-lg btn-success">Save Interview</button>
+
+		  </form>
+		  <br>
+		  <button id="submitIssue" class="btn btn-lg btn-default">Report a Problem with this Interview</button>
+		  <button class="btn btn-lg btn-default" onclick="window.open('http://www.bitly.com/milvalchal'), '_blank'">Record for MilValChal</button>
+	</div>
+
+</div>
+<script type="text/javascript">
+	$("select").selectpicker({style: 'btn btn-primary', menuStyle: 'dropdown-inverse'});
+</script>
+
+
+<!-- UserVoice JavaScript SDK (only needed once on a page) -->
+<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/E0IHRYI92VQSCjIPoVGlWQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+
+<!-- A function to launch the Classic Widget -->
+<script>
+UserVoice = window.UserVoice || [];
+function showClassicWidget() {
+  UserVoice.push(['showLightbox', 'classic_widget', {
+    mode: 'full',
+    primary_color: '#cc6d00',
+    link_color: '#007dbf',
+    default_mode: 'support',
+    forum_id: 265161
+  }]);
+};
+
+$('#submitIssue').click(function(){
+	showClassicWidget();
+});
+
+</script>

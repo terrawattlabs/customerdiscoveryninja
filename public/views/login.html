@@ -1,0 +1,35 @@
+<div class="dual">
+<div class="dual-child">
+	<h3>Sign In</h3>
+	<form ng-submit="login()">
+		<label class="input-label" for="email">E-mail:</label>
+		<input class="form-control main-input" type="text" name="email" placeholder="E-mail" id="email" ng-model="loginEmail"/>
+
+		<label class="input-label" for="password">Password:</label>
+		<input class="form-control main-input" type="password" name="password" placeholder="Password" id="password" ng-model="loginPass"/>
+
+		<button type="submit" class="btn btn-success btn-lg login-button">Sign In</button>
+	</form>
+	<a ng-click="forgotPass()">Forgot Your Password?</a>
+</div>
+<div class="dual-child">
+	<h3>Sign Up</h3>
+
+	<form ng-submit="newUser()">	
+		<label class="input-label" for="name">Name:</label>
+		<input class="form-control main-input" type="text" name="name" placeholder="Name" id="name" ng-model="name"/>
+
+		<label class="input-label" for="newemail">E-Mail:</label>
+		<input class="form-control main-input" type="text" name="email" placeholder="E-mail" id="newemail" ng-model="email"/>
+
+		<label class="input-label" for="newpassword">Password:</label>
+		<input class="form-control main-input" type="password" name="password1" placeholder="Password" id="newpassword" ng-model="password"/>
+
+		<label class="input-label" for="password2">Re-type Password:</label>
+		<input class="form-control main-input" type="password" name="password2" placeholder="Verify" id="password2"/>
+
+		<button  type="submit" class="btn btn-primary btn-lg login-button">Sign Up</button>
+	</form>
+	<p><i>Enter payment information on next page</i></p>
+</div>
+</div>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Discovery Ninja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="prvcE6ZEZUxBLHWr6QLGY_D5tpZAPEhxloZpGBoABag" />
+    <meta name="description" content="Customer Discovery made easy. On-demand calls from real US consumers, right in your browser. Validate your startup idea and become a Customer Discovery Ninja!">
+    <script src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+
+    
+    <!-- This is for production!!!!! Change before deploying to PROD!!!!!!!!!! -->
+	  <script type="text/javascript">
+	     // Parse.initialize("rItsbuvkWRxbbDqFCPN1S5zwR5GOuEw4dabRL3Vi", "k20sKk3seoCDKQZYRaHYpcYhPoR0HkTOl31PmGdV");
+	  </script>
+    
+  
+
+    <!-- THIS IS FOR DEVELOPMENT!!! CHANGE BEFORE DEPLOYING-->
+    <script type="text/javascript">
+      Parse.initialize("yJReXMHwe9IN0XgLCdvgNl7FOTuKknJ3NYLRvtSN", "l5h8byjWEmJ53DVqFeKuCMWZNty2l22IgCBxnpEx");
+    </script>
+    
+
+	<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+          // This identifies your website in the createToken call below
+          //LIVE MODE
+          // Stripe.setPublishableKey('pk_live_B6g6obRdwPR6Wi3MOU8aPPCq');
+          // ...
+
+
+          //TEST MODE ---------------------------------------------------------------------------------------------------------------
+         Stripe.setPublishableKey('pk_test_ejh4E7P2tzqYrWEfyIoe6K0L');
+    // </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="assets/Flat-UI-master/js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="scripts/fullcalendar-2.3.2/lib/jquery-ui.custom.min.js"></script> 
+<!-- calendar -->
+    <script type="text/javascript" src="scripts/fullcalendar-2.3.2/lib/moment.min.js"></script>
+    
+    
+    <script type="text/javascript" src="scripts/fullcalendar-2.3.2/fullcalendar.js"></script> 
+
+
+    <!--angular stuff -->
+    <script type="text/javascript" src="scripts/angular/angular.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-cookies.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-sanitize.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-growl/build/angular-growl.js"></script>
+    <script type="text/javascript" src="assets/angulartics-0.15.20/dist/angulartics.min.js"></script>
+    <script type="text/javascript" src="assets/angulartics-0.15.20/dist/angulartics-ga.min.js"></script>
+    <script type="text/javascript" src="scripts/angular/ng-audio.min.js"></script>
+    <script type="text/javascript" src="scripts/angular/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-payments.js"></script>
+    <script type="text/javascript" src="scripts/angular-ui-select/dist/select.js"></script>
+    <script type="text/javascript" src="scripts/angular-widget.js"></script>
+    <script type="text/javascript" src="scripts/scrollspydirectives.js"></script>
+    <script type="text/javascript" src="scripts/angular/angular-tour-tpls.js"></script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/date.js"></script>
+  
+
+
+
+
+
+    <!-- include the app files -->
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/controllers.js"></script>
+    <script type="text/javascript" src="scripts/controllers/scheduleCtrl.js"></script>
+    <script type="text/javascript" src="scripts/controllers/availabilityCtrl.js"></script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/rangy/1.2.3/rangy-core.js"></script>
+
+	  <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
+    
+
+
+	<!--include CSS -->
+
+    <link href="assets/Flat-UI-master/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/Flat-UI-master/bootstrap/css/prettify.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="scripts/angular/angular-growl/build/angular-growl.min.css">
+    <link rel="stylesheet" href="scripts/angular-ui-select/dist/select.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <!--<script type="text/javascript" src="styles/ng-audio.min.css"></script>-->
+
+    <!-- Loading Flat UI -->
+  
+  <link href="assets/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/landing-mobile.css" media="only screen and (max-width: 1000px)">
+  <link rel="stylesheet" type="text/css" href="styles/angular-tour.css">
+  <link rel="stylesheet" type="text/css" href="scripts/fullcalendar-2.3.2/fullcalendar.css">
+    <link rel="stylesheet" type="text/css" href="scripts/fullcalendar-2.3.2/fullcalendar.print.css">
+
+  <link rel="shortcut icon" href="ninja.ico">
+
+  <!-- Agile CRM -->
+  <script type="text/javascript" src="https://customerdiscovery.agilecrm.com/stats/min/agile-min.js">
+</script>
+<script type="text/javascript" >
+ _agile.set_account('m6ck9h951h0o6mlk32g70q9gr4', 'customerdiscovery');
+ _agile.track_page_view();
+ _agile_execute_web_rules();
+</script>
+</head>
+<body ng-app="cdApp">
+   <div ng-include="'views/partials/nav.html'"></div>
+   <!--
+   <div ng-include="'views/partials/phone.html'"></div>	-->
+   <div class="container" ng-view=""></div>
+    <div ng-include="'views/partials/ctabar.html'"></div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43624363-5', 'auto');
+  //line below deleted for angulartics
+  //ga('send', 'pageview');
+
+</script>
+
+<div growl></div>
+<script>
+// Include the UserVoice JavaScript SDK (only needed once on a page)
+UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='http://widget.uservoice.com/E0IHRYI92VQSCjIPoVGlWQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+//
+// UserVoice Javascript SDK developer documentation:
+// https://www.uservoice.com/o/javascript-sdk
+//
+
+// Set colors
+UserVoice.push(['set', {
+  accent_color: '#6aba2e',
+  trigger_color: 'white',
+  trigger_background_color: '#6aba2e'
+}]);
+
+// Identify the user and pass traits
+// To enable, replace sample data with actual user traits and uncomment the line
+UserVoice.push(['identify', {
+  //email:      'john.doe@example.com', // User’s email address
+  //name:       'John Doe', // User’s real name
+  //created_at: 1364406966, // Unix timestamp for the date the user signed up
+  //id:         123, // Optional: Unique id of the user (if set, this should not change)
+  //type:       'Owner', // Optional: segment your users by type
+  //account: {
+  //  id:           123, // Optional: associate multiple users with a single account
+  //  name:         'Acme, Co.', // Account name
+  //  created_at:   1364406966, // Unix timestamp for the date the account was created
+  //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+  //  ltv:          1495.00, // Decimal; lifetime value of the account
+  //  plan:         'Enhanced' // Plan name for the account
+  //}
+}]);
+
+// Add default trigger to the bottom-right corner of the window:
+UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+
+// Or, use your own custom trigger:
+//UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+// Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+UserVoice.push(['autoprompt', {}]);
+</script>
+
+</body>
+
+    
+    <script src="assets/Flat-UI-master/js/bootstrap.min.js"></script>
+    <script src="assets/Flat-UI-master/js/bootstrap-select.js"></script>
+    <script src="assets/Flat-UI-master/js/bootstrap-switch.js"></script>
+    <script src="assets/Flat-UI-master/js/flatui-checkbox.js"></script>
+    <script src="assets/Flat-UI-master/js/flatui-radio.js"></script>
+    <script src="assets/Flat-UI-master/js/jquery.tagsinput.js"></script>
+    <script src="assets/Flat-UI-master/js/jquery.placeholder.js"></script>
+    <script src="assets/Flat-UI-master/js/typeahead.js"></script>
+    <script src="assets/Flat-UI-master/bootstrap/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/Flat-UI-master/js/application.js"></script>
+</html>

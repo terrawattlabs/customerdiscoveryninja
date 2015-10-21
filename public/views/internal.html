@@ -1,0 +1,11 @@
+<div ng-repeat="request in requests" class="request-holder">
+	Title: {{ request.get('title') }}<br>
+	Description: {{ request.get('description') }}<br>
+	Number of HITs: {{ request.get('reqInterviews') }}<br>
+	Phone: {{ request.get('phone') }}<br>
+	Status: {{ request.get('status') }} 
+	<button ng-click="updateStatus(request.id, 'submitted')">Mark as Submitted</button>
+	<button ng-click="updateStatus(request.id, 'closed')">Mark as Closed</button><br>
+	Confirmation code: {{ request.get('confirm')}}<br>
+	Request ID: {{ request.id}}<br>
+</div>

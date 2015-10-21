@@ -1,0 +1,42 @@
+Step {{surveyStep}} of 4
+
+<div ng-show="surveyStep == 1">
+	<div class="form-group">
+        <label for="question1">Please provide a quick one sentence summary of your discussion</label>
+        <input type="text" id="question1" ng-model="question1" name="question1" class="form-control"/>
+    </div>
+    <button class="btn btn-primary btn-lg" ng-click="addStep()">Next</button>
+</div>
+<div ng-show="surveyStep == 2">
+	<div class="form-group">
+        <label for="question2">About how long was the interview? (nearest minute if you could please)</label>
+        <input type="text" id="question2" ng-model="question2" name="question2" class="form-control"/>
+    </div>
+    <button class="btn btn-primary btn-lg" ng-click="addStep()">Next</button>
+</div>
+<div ng-show="surveyStep == 3">
+	<div class="form-group">
+        <label for="question3">What was the name of the person you talked to? (if you can't remember, just say so)</label>
+        <input type="text" id="question3" ng-model="question3" name="question3" class="form-control"/>
+    </div>
+    <button class="btn btn-primary btn-lg" ng-click="addStep()">Next</button>
+</div>
+<div ng-show="surveyStep == 4">
+	<div class="form-group">
+        <label for="question3">Was there anything interesting about the interview?</label>
+        <input type="text" id="question4" ng-model="question4" name="question4" class="form-control"/>
+    </div>
+    <button class="btn btn-primary btn-lg" ng-click="addStep()">Finish</button>
+</div>
+<div ng-show="surveyStep == 5">
+	You can enter the code below into Mechanical Turk
+	<br>
+	<br>
+
+	<strong>{{answer}}</strong>
+
+	<br>
+	<br>
+
+	You can close this window! Thanks!
+</div>

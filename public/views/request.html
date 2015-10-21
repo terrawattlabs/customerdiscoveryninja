@@ -1,0 +1,129 @@
+<h2>Request Interviews</h2>
+<br>
+
+<div class="request-when request-section">
+	<h5>When?</h5>
+	<div class="request-when-picker">
+		<p ng-show="checkForInt()">You currently have an open request for interviews, you may only schedule future interviews until that request is completed (see timer above).</p>
+		<p ng-hide="checkForInt()">Please Select One:</p>
+		<div class="btn-group">
+	        <label class="btn btn-success btn-hg" ng-model="whenModel" btn-radio="'Now'" uncheckable ng-disabled="checkForInt()">Get Interviews Now</label>
+	        <label class="btn btn-success btn-hg" ng-model="whenModel" btn-radio="'Later'" uncheckable>Schedule Interviews for Later</label>
+   		 </div>
+	</div>
+	<div ng-show="whenModel == 'Now'">
+		<span  class="nullable"> 
+          <h4>How long are you free for?</h4> 
+           <p style="font-size:.75em;">Note: you can do other things during this time, just leave the browser window open.</p>
+          <select ng-model="selectedDuration" ng-options="duration.readable for duration in durationOptions">
+            <option value="">-- Select --</option>
+          </select>
+ 		 </span><br/>
+ 		 <strong>You Can Expect About:</strong> {{ selectedDuration.expect }}
+	</div>
+	<div ng-show="whenModel == 'Later'">
+		<span  class="nullable"> 
+	          <h4>How long will you be free for?</h4> 
+	          <p style="font-size:.75em;">Note: you can do other things during this time, just leave the browser window open.</p>
+	          <select ng-model="selectedFutureDuration" ng-options="duration.readable for duration in durationOptions">
+	          
+	            <option value="">-- Select --</option>
+	          </select>
+	 		 </span><br/>
+	 		 <strong>You Can Expect About:</strong> {{ selectedFutureDuration.expect }}
+	          <h4>Great, pick a date and time:</h4>
+	          <p>{{dt | date:'fullDate'}}</p>
+	         <span  class="nullable">
+	          <p>At: <select ng-model="selectedTime" ng-options="time.readable for time in availableTimes">
+	            <option value="">-- choose time --</option>
+	          </select></p>
+	  </span><br/>
+	    <div style="display:inline-block; min-height:290px;">
+	        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
+	    </div>
+	  </div>
+</div>
+<div class="request-who request-section">
+	<h5>Who?</h5>
+	<p>Select your target customer segment.</p>
+	<div class="segmentHolder">
+		<div ng-click="showNewTargetDescription()" ng-class="{'selected-segment': showSubmitNew}"><p>Don't see your target segment? Click here</p></div>
+		<div ng-repeat="segment in collection"
+             ng-class="{ 'selected-segment': $index == selectedIndex }"
+             ng-click="itemClicked($index)"> {{ segment.get('customerTitle') }} </div>
+	</div>
+	<div style="padding-top: 2em;">
+		<p>Description: {{selectedSegment.get('customerDescription')}}</p>
+	</div>
+	<div ng-show="showSubmitNew" id="submitNewSegmentForm">
+		<h5>Request a new target segment</h5>
+		<p>In order to provide high quality interviews with your target market segment, we personally setup each new target segment in our system. Please fill out the information below and we'll be in touch shortly to setup a new segment for you.</p>
+		<div class="input-group">
+			<label for="newGeneral">In general terms, who do you want to talk to?</label>
+			<input id="newGeneral" type="text" ng-model="newGeneral" class="form-control"/>
+		</div>
+		<div class="input-group">
+			<label for="newSpecific">Now, give us a little more detail about your target.</label>
+			<textarea id="newSpecific" ng-model="newSpecific" class="form-control"></textarea>
+		</div>
+		<p>Note: We'll email you and contact you with more info soon.</p>
+		<button class="btn btn-primary" ng-click="submitNewSegmentRequest()">Submit New Segment Request</button>
+	</div>
+	<div ng-show="showSubmittedNew">
+		<h5>New Segment Request Sent!</h5>
+		<p>We've sent you a summary email and we'll be in touch shortly.</p>
+		<p>Feel free to fill out this page to talk to any of our existing segments.</p>
+	</div>
+	
+	
+</div>
+<div class="request-what request-section">
+	<h5>What?</h5>
+	<p>Here is what is going to happen now</p>
+	<div ng-show="whenModel == 'Now'">
+		<ul>
+			<li>Your request will be sent out to our pool of participants</li>
+			<li>If there are any available, they'll call you within the next <strong>{{ selectedDuration.readable }}</strong></li>
+			<li>Just leave this browser tab open so you can recieve the call</li>
+			<li>It may take about <strong>10-15 minutes for a call to come in</strong></li>
+		</ul>
+	</div>
+	<div ng-show="whenModel == 'Later'">
+		<ul>
+			<li>You're scheduling a {{selectedFutureDuration.readable}} block to interview customers</li>
+			<li>Starting at <strong>{{selectedTime.readable}} on {{dt | date:'fullDate'}}</strong></li>
+			<li>We'll send you a calendar invite so you can remember (sent to: {{currentUserEmail}})</li>
+			<li>Just login to Customer Discovery Ninja to start taking calls</li>
+		</ul>
+	</div>
+	
+</div>
+<button class="btn btn-primary btn-hg" ng-click="sendRequest()" ng-disabled="checkready()">Make it happen!</button>
+
+
+
+
+
+
+<!-- <div class="schedule-interview-holder" ng-show="true">
+	<div>
+		<h4>I'm free now</h4>
+		<ul>
+			<li>You'll need at least an hour</li>
+			<li>Expect about 1 interview per 30 minutes</li>
+		</ul>
+		<button class="btn btn-primary">Let's Go!</button>
+	</div>
+	<div>
+		<h4>I'll schedule for later</h4>
+		<ul>
+			<li>Tell us when you're free</li>
+			<li>We'll send you a calendar event to remind you</li>
+		</ul>
+		<button class="btn btn-primary">Let's Go!</button>
+	</div>
+</div>
+
+<div class="ready-now">
+	<h4>Awesome, who do you want to talk to?</h4>
+</div> -->

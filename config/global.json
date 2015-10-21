@@ -1,0 +1,26 @@
+{
+    "applications": {
+        "CDN Dev": {
+            "applicationId": "EwBcgEHLe2kL99RtW84I779YEcI5qcdCa6g1Hd7X", 
+            "masterKey": "mN2ddfkQ6EBVZhgXCcbmZcdixXulxAEwyogtEB8K"
+        }, 
+        "CDNdev": {
+            "applicationId": "EwBcgEHLe2kL99RtW84I779YEcI5qcdCa6g1Hd7X", 
+            "masterKey": "mN2ddfkQ6EBVZhgXCcbmZcdixXulxAEwyogtEB8K"
+        }, 
+        "Customer Discovery": {
+            "applicationId": "rItsbuvkWRxbbDqFCPN1S5zwR5GOuEw4dabRL3Vi", 
+            "masterKey": "Il6U5eWcF8xIRgV9A5TVp3R2JYNfE2f3EWqWc8Is"
+        }, 
+        "_default": {
+            "link": "custdiscdev"
+        }, 
+        "custdiscdev": {
+            "applicationId": "yJReXMHwe9IN0XgLCdvgNl7FOTuKknJ3NYLRvtSN", 
+            "masterKey": "2NCCRYaUyWX0VoKFc7knNekvh5ozUe783NW7ro9e"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}

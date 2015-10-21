@@ -1,0 +1,73 @@
+<!--
+<div>
+        <ul>
+          
+            
+            
+           
+            <li><a href="#/internal">Internal</a></li>
+            
+            
+
+            
+
+        </ul>
+    </div>
+
+-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavCtrl">
+     <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-02">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="http://www.customerdiscovery.ninja" target="_blank">Customer Discovery Ninja</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbar-collapse-02">
+            <ul ng-show="isLoggedIn()" class="nav navbar-nav">
+                <li ng-hide="isActive('/setup')"  ng-class="{ active: isActive('/dashboard')}"><a href="#/dashboard">Dashboard</a></li>
+                 <li><div ng-hide="isActive('/setup')"  ng-include="'views/partials/phone.html'" style="margin-right: 2em; margin-top: .25em;"></div></li>
+                 <li><div ng-hide="isActive('/setup')" ng-include="'views/partials/intCounter.html'" style="margin-right: 2em; margin-top: .25em;"></div></li>
+
+               <!-- <li ng-class="{ active: isActive('/interviews')}"><a href="#/interviews">View Interview Notes</a></li>-->
+            </ul>
+            <ul ng-hide="isLoggedIn()" class="nav navbar-nav">
+                  <li ng-hide="isActive('/')"><a href="http://www.customerdiscovery.ninja/#/" target="_blank">Home</a></li>
+                  <!-- <li ng-show="isActive('/')" ng-class="{ active: isActive('/howitworks')}"><a ng-click="scrollTo('what')">What</a></li>
+                  <li ng-show="isActive('/')" ng-class="{ active: isActive('/pricing')}"><a ng-click="scrollTo('why')">Why</a></li> -->
+                  <!-- <li ng-show="isActive('/')" ng-class="{ active: isActive('/aboutus')}"><a ng-click="scrollTo('value')">Value</a></li> -->
+                
+                <li ng-class="{ active: isActive('blog.customerdiscovery.ninja')}"><a href="http://www.customerdiscovery.ninja/blog" target="_blank">Blog</a></li>
+                <li ng-class="{ active: isActive('/faq')}"><a href="http://www.customerdiscovery.ninja/faq" target="_blank">FAQ</a></li>
+            </ul>
+
+             <div id="isthisthebutton" class="btn-group nav navbar-nav navbar-right" dropdown is-open="status.isopen" ng-show="isLoggedIn() && !isActive('/setup')" style="margin-right: 2em; margin-top: .25em;">
+                <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                  {{ currentUser.get('name') }} <span class="caret"></span>
+                </button>
+                <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                <ul class="dropdown-menu dropdown-inverse" role="menu">
+                  <li><a href="#/settings">Settings</a></li>
+                    <!--<li><a href="#/projects">Projects</a></li>-->
+                    <li><a href="#/settings">Your Credits <span class="badge">{{ currentUser.get('balance') }}</span></a></li>
+                    <li><a href="#/takenotes">Take Notes</a></li>
+                    <li><a href="https://customerdiscoveryninja.uservoice.com" target="_blank">Support</a></li>
+                    <li><a href="https://www.sohelpful.me/everyone?search=Customer%20Development" target="_blank">Get Expert Advice</a></li>
+                    
+                  <li class="divider"></li>
+                  <li><button class="btn btn-danger btn-sm" ng-click="logOut()">Log Out</button></li>
+                </ul>
+              </div>     
+            <!-- Inverse look -->
+            <div ng-hide="isLoggedIn()" style="color: white;" id="nav-sub" id="navbar-collapse-02">
+              Our Ninjas have recorded <span style="color:#2ecc71;">{{ theDuration }}</span> minutes of interviews <!--<button ng-hide="isActive('/milvalchal')" class="btn btn-clear btn-nav-cta" ng-click="goToPage('/signup')" analytics-on analytics-event="Button Click" analytics-category="Call to Actions" analytics-label="Navbar CTA">Join Them</button>
+              <button ng-show="isActive('/milvalchal')" class="btn btn-clear btn-nav-cta" ng-click="goToPage('/alphalogin')" analytics-on analytics-event="Button Click" analytics-category="Call to Actions" analytics-label="Navbar CTA">Join Them</button>-->
+            </div>
+                 
+          </div><!-- /.navbar-collapse -->
+
+</nav>
+
+
+         

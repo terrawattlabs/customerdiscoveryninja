@@ -1,0 +1,62 @@
+<h2>Dashboard</h2>
+<div class="dash-row">
+	<div class="dash-item dash-full-item">
+		
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td colspan="1"><h4>Projects <a href="http://customerdiscoveryninja.uservoice.com/knowledgebase/articles/442382-creating-a-new-project" target="_blank"><span class="glyphicon glyphicon-question-sign" style="font-size: .6em;"></span></a></h4></td>
+					<td><button class="btn btn-default" ng-click="open()" style="float: right;"><span class="glyphicon glyphicon-plus"></span> New Project</button></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="3"><h6>Your Projects<h6></td>
+				</tr>
+				<tr ng-repeat="proj in userProjectList">
+					<td>{{ proj.get('title') }}</td>
+					<td><button ng-click="goToPage('/projdetail/' + proj.id)" class="btn btn-primary btn-sm" style="float: right; margin-right: 3em;">Go!</button></td>
+				</tr>
+				<tr>
+					<td colspan="3"><h6>Shared Projects<h6></td>
+				</tr>
+				<tr ng-repeat="proj in sharedProjectList">
+					<td>{{ proj.get('title') }}</td>
+					<td><button ng-click="goToPage('/projdetail/' + proj.id)" class="btn btn-primary btn-sm">Go!</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+
+<!-- Modal template for angular to use -->
+<script type="text/ng-template" id="myModalContent.html">
+       <form name="newProjectForm" novalidate ng-submit="submitNewProject()">
+       		{{setFormReference(newProjectForm)}}
+			  <div class="modal-header">
+			    <h4>Add a Project</h4>
+			  </div>
+			  <div class="modal-body">
+			  	<div class="form-group">
+				    <label for="title">Project Name</label>
+				    <input type="text" class="form-control" id="title" ng-model="newProjectForm.title"/>
+			    </div>
+			    <div class="form-group">
+				    <label for="description">Project Description</label>
+				    <input type="text" class="form-control" id="description" ng-model="newProjectForm.description"/>
+			    </div>
+			    <div class="form-group" style="display: none;">
+				    <label for="projShare">Share the Project</label>
+				    <input type="text" class="form-control" id="projShare" ng-model="newProjectForm.projShare"/>
+			    </div>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn btn-primary" type="submit">Create It!</button>
+			    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+			  </div>
+			</form>
+		</script>
+
+
+

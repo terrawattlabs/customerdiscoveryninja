@@ -1,0 +1,47 @@
+CDN Segments
+<div class="internal-segments-holder">
+	<div class="segmentList-Internal">
+		<div ng-repeat="item in segmentList" 
+			 ng-class="{ 'selected-segment': $index == selectedIndex }"
+             ng-click="itemClicked($index)">{{item.get('customerTitle')}}</div>
+	</div>
+	<div class="segmentEditor">
+
+		<div class="form-group">
+            <label for="customerTitle">Customer Title</label>
+            <input type="text" id="customerTitle" ng-model="customerTitle" name="customerTitle" class="form-control"/>
+          </div>
+		<div class="form-group">
+            <label for="customerDescription">Customer Description</label>
+            <input type="text" id="customerDescription" ng-model="customerDescription" name="customerDescription" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="MTTitle">Mechanical Turk Title</label>
+            <input type="text" id="MTTitle" ng-model="MTTitle" name="MTTitle" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="MTDescription">Mechanical Turk Description</label>
+            <input type="text" id="MTDescription" ng-model="MTDescription" name="MTDescription" class="form-control"/>
+        </div>
+         <div class="form-group">
+            <label for="MTQuestion">Mechanical Turk Question</label>
+            <input type="text" id="MTQuestion" ng-model="MTQuestion" name="MTQuestion" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="MTReward">Mechanical Turk Reward</label>
+            <div class="input-group">
+            	<span class="input-group-addon">$</span>
+         	    <input type="text" id="MTReward" ng-model="MTReward" name="MTReward" class="form-control"/>
+            </div>
+        </div>
+        <button ng-click="saveSegment()" class="btn btn-primary">Save Segment</button>
+        <button ng-click="newSegment()" class="btn btn-default">Save as New Segment</button>
+	</div>
+</div>
+<div>
+	<h3>Mechanical Turk Preview</h3>
+	<p>Title: {{MTTitle}}</p>
+	<p>Description: {{MTDescription}}</p>
+	<p>Question: {{MTQuestion}}, please call *67 [User's Number] for the interview. Note that using *67 will keep your number completely annonymous.</p>
+	<p>Reward: ${{MTReward}}</p>
+</div>
