@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="prvcE6ZEZUxBLHWr6QLGY_D5tpZAPEhxloZpGBoABag" />
     <meta name="description" content="Customer Discovery made easy. On-demand calls from real US consumers, right in your browser. Validate your startup idea and become a Customer Discovery Ninja!">
-    <script src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+    <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 
     
     <!-- This is for production!!!!! Change before deploying to PROD!!!!!!!!!! -->
 	  <script type="text/javascript">
-	     // Parse.initialize("rItsbuvkWRxbbDqFCPN1S5zwR5GOuEw4dabRL3Vi", "k20sKk3seoCDKQZYRaHYpcYhPoR0HkTOl31PmGdV");
+	     Parse.initialize("rItsbuvkWRxbbDqFCPN1S5zwR5GOuEw4dabRL3Vi", "k20sKk3seoCDKQZYRaHYpcYhPoR0HkTOl31PmGdV");
 	  </script>
     
   
 
     <!-- THIS IS FOR DEVELOPMENT!!! CHANGE BEFORE DEPLOYING-->
     <script type="text/javascript">
-      Parse.initialize("yJReXMHwe9IN0XgLCdvgNl7FOTuKknJ3NYLRvtSN", "l5h8byjWEmJ53DVqFeKuCMWZNty2l22IgCBxnpEx");
+      // Parse.initialize("yJReXMHwe9IN0XgLCdvgNl7FOTuKknJ3NYLRvtSN", "l5h8byjWEmJ53DVqFeKuCMWZNty2l22IgCBxnpEx");
     </script>
     
 
-	<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+	<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
           // This identifies your website in the createToken call below
           //LIVE MODE
-          // Stripe.setPublishableKey('pk_live_B6g6obRdwPR6Wi3MOU8aPPCq');
+          Stripe.setPublishableKey('pk_live_B6g6obRdwPR6Wi3MOU8aPPCq');
           // ...
 
 
           //TEST MODE ---------------------------------------------------------------------------------------------------------------
-         Stripe.setPublishableKey('pk_test_ejh4E7P2tzqYrWEfyIoe6K0L');
+         // Stripe.setPublishableKey('pk_test_ejh4E7P2tzqYrWEfyIoe6K0L');
     // </script>
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <script src="assets/Flat-UI-master/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="scripts/fullcalendar-2.3.2/lib/jquery-ui.custom.min.js"></script> 
@@ -76,10 +76,10 @@
     <script type="text/javascript" src="scripts/controllers/scheduleCtrl.js"></script>
     <script type="text/javascript" src="scripts/controllers/availabilityCtrl.js"></script>
 
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/rangy/1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/rangy/1.2.3/rangy-core.js"></script>
 
-	  <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
+	  <script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
     
 
 
@@ -89,13 +89,13 @@
     <link href="assets/Flat-UI-master/bootstrap/css/prettify.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scripts/angular/angular-growl/build/angular-growl.min.css">
     <link rel="stylesheet" href="scripts/angular-ui-select/dist/select.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
     <!--<script type="text/javascript" src="styles/ng-audio.min.css"></script>-->
 
     <!-- Loading Flat UI -->
   
   <link href="assets/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
   <link rel="stylesheet" type="text/css" href="styles/landing-mobile.css" media="only screen and (max-width: 1000px)">
   <link rel="stylesheet" type="text/css" href="styles/angular-tour.css">
@@ -105,7 +105,7 @@
   <link rel="shortcut icon" href="ninja.ico">
 
   <!-- Agile CRM -->
-  <script type="text/javascript" src="https://customerdiscovery.agilecrm.com/stats/min/agile-min.js">
+  <script type="text/javascript" src="//customerdiscovery.agilecrm.com/stats/min/agile-min.js">
 </script>
 <script type="text/javascript" >
  _agile.set_account('m6ck9h951h0o6mlk32g70q9gr4', 'customerdiscovery');
@@ -136,7 +136,7 @@
 <div growl></div>
 <script>
 // Include the UserVoice JavaScript SDK (only needed once on a page)
-UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='http://widget.uservoice.com/E0IHRYI92VQSCjIPoVGlWQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/E0IHRYI92VQSCjIPoVGlWQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
 //
 // UserVoice Javascript SDK developer documentation:

@@ -4,11 +4,11 @@ var express = require('express');
 
 var Stripe = require('stripe');
 // LIVE KEY
-// Stripe.initialize('sk_live_LpYrmwsewIXcsQgNCbNq4XyG');
+Stripe.initialize('sk_live_LpYrmwsewIXcsQgNCbNq4XyG');
 
 
 //TEST KEY
-Stripe.initialize('sk_test_phZEoWWVBafgg76mObesKQQG');
+// Stripe.initialize('sk_test_phZEoWWVBafgg76mObesKQQG');
 
 var SendGrid = require("sendgrid");  
 SendGrid.initialize("customer_ninja", "courthouse1327");
@@ -52,7 +52,7 @@ app.get('/api/incoming/:clientID', function (request, response) {
 
     twiml.dial(function (res) {
       res.client(clientName);
-    }, { action: "http://custdiscdev.parseapp.com/recording", record: "record-from-answer", method: "POST" });
+    }, { action: "http://customerdiscovery.parseapp.com/recording", record: "record-from-answer", method: "POST" });
     twiml.say('goodbye');
 
  
@@ -72,7 +72,7 @@ app.post('/api/outgoing', function (request, response) {
     // add some instructions
     twiml.dial(function (res) {
       res.number(phone);
-    }, { callerId: callerID, action: "http://custdiscdev.parseapp.com/recording", record: "record-from-answer", method: "POST"});
+    }, { callerId: callerID, action: "http://customerdiscovery.parseapp.com/recording", record: "record-from-answer", method: "POST"});
 
  
     // Render the TwiML XML document
@@ -343,7 +343,7 @@ Parse.Cloud.define("purchaseNumber", function (request, response) {
 
       client.incomingPhoneNumbers.create({
           friendlyName: userEmail,
-          voiceUrl: "http://custdiscdev.parseapp.com/api/incoming/" + userID,
+          voiceUrl: "http://customerdiscovery.parseapp.com/api/incoming/" + userID,
           phoneNumber: phoneNumber,
           voiceMethod: "GET"
       }, function (err, number) {
@@ -368,8 +368,8 @@ eval(fs.readFileSync('cloud/hmac-sha1.js')+'');
 // Please change these keys when deploying on new server
 var awsAccessKey = "AKIAJ7X5NFPYJFCIIT7A";
 var awsSecretKey = "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";
-var url = 'https://mechanicalturk.sandbox.amazonaws.com/';
-// var url = 'https://mechanicalturk.amazonaws.com/';
+// var url = 'https://mechanicalturk.sandbox.amazonaws.com/';
+var url = 'https://mechanicalturk.amazonaws.com/';
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
